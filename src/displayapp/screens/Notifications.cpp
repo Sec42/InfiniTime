@@ -9,6 +9,7 @@
 using namespace Pinetime::Applications::Screens;
 extern lv_font_t jetbrains_mono_extrabold_compressed;
 extern lv_font_t jetbrains_mono_bold_20;
+extern lv_font_t jetbrains_mono_bold_lg;
 
 Notifications::Notifications(DisplayApp* app,
                              Pinetime::Controllers::NotificationManager& notificationManager,
@@ -271,12 +272,12 @@ Notifications::NotificationItem::NotificationItem(const char* title,
   lv_obj_set_style_local_border_width(container, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
 
   subject_container = lv_cont_create(container, nullptr);
-  lv_obj_set_style_local_bg_color(subject_container, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, Colors::bgAlt);
+  lv_obj_set_style_local_bg_color(subject_container, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_BLACK);
   lv_obj_set_style_local_pad_all(subject_container, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 10);
   lv_obj_set_style_local_pad_inner(subject_container, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 5);
   lv_obj_set_style_local_border_width(subject_container, LV_CONT_PART_MAIN, LV_STATE_DEFAULT, 0);
 
-  lv_obj_set_pos(subject_container, 0, 50);
+  lv_obj_set_pos(subject_container, 0, 30);
   lv_obj_set_size(subject_container, LV_HOR_RES, LV_VER_RES - 50);
   lv_cont_set_layout(subject_container, LV_LAYOUT_COLUMN_LEFT);
   lv_cont_set_fit(subject_container, LV_FIT_NONE);
@@ -309,6 +310,8 @@ Notifications::NotificationItem::NotificationItem(const char* title,
 
   switch (category) {
     default:
+      lv_obj_set_style_local_text_color(alert_subject, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_WHITE);
+	  lv_obj_set_style_local_text_font(alert_subject, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &jetbrains_mono_bold_lg);
       lv_label_set_text(alert_subject, msg);
       break;
     case Controllers::NotificationManager::Categories::IncomingCall: {
