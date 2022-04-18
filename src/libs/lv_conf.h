@@ -414,6 +414,7 @@ typedef void* lv_indev_drv_user_data_t;            /*Type of user data in the in
  */
 
 #define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(jetbrains_mono_bold_20) \
+                               LV_FONT_DECLARE(jetbrains_mono_bold_lg) \
                                LV_FONT_DECLARE(jetbrains_mono_extrabold_compressed) \
                                LV_FONT_DECLARE(jetbrains_mono_42) \
                                LV_FONT_DECLARE(jetbrains_mono_76) \
